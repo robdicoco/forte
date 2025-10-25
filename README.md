@@ -1,6 +1,6 @@
 # Forte Wallet
 
-![Forte Wallet Banner](docs/image/forte_base.png)
+![Forte Wallet Banner](./docs/image/forte_base.png)
 
 > **Where Security is Our Strength**
 
@@ -10,7 +10,7 @@ A secure, non-custodial cryptocurrency wallet. Forte is built on a foundation of
 ## Forte in Motion
 Experience the secure, rhythmic core of Forte.
 
-![Forte Wallet Animation](docs/video/forte.mp4)
+![Forte Wallet Animation](./docs/video/forte.mp4)
 
 ## Features
 - **Non-Custodial:** You own your keys.
