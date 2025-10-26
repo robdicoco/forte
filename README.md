@@ -1,6 +1,6 @@
 # Forte Wallet
 
-<img src="./docs/image/forte_base.png" alt="Forte Wallet Banner" width="240" height="240" />
+<!-- <img src="./docs/image/forte_base.png" alt="Forte Wallet Banner" width="240" height="240" /> -->
 
 
 
@@ -10,7 +10,15 @@ A secure, non-custodial cryptocurrency wallet. Forte is built on a foundation of
 ## Forte in Motion
 Experience the secure, rhythmic core of Forte.
 
-<iframe width="360" height="640" src="https://www.youtube.com/embed/t2t-exXxvBA" title="Forte Wallet Animation" frameborder="0" allowfullscreen></iframe>
+
+<!-- [![Forte Wallet Animation](https://img.youtube.com/vi/t2t-exXxvBA>/hqdefault.jpg)](https://www.youtube.com/embed/t2t-exXxvBA) -->
+
+<!-- [<img src="https://img.youtube.com/vi/t2t-exXxvBA/hqdefault.jpg" width="600" height="300"
+/>](https://www.youtube.com/embed/t2t-exXxvBA) -->
+
+[<img src="./docs/image/forte_play.png" width="400" height="400"
+/>](https://www.youtube.com/embed/t2t-exXxvBA)
+
 
 
 > **Where Security is Our Strength**
@@ -57,45 +65,71 @@ Forte employs a hybrid architecture that isolates security-critical operations f
 
 ## 🗺️ Development Roadmap
 
+### Phase 0: Requirements Definition & Scoping 📝
+
+- [x] **October 2025 - February 2026**: Requirements Gathering & Planning
+  - [x] Define target users & threat model
+  - [x] Identify primary use cases (key management, wallet functionality, secure signing)
+  - [x] Audit competitor landscape (security model, usability, features)
+  - [x] List minimum viable product (MVP) features
+
+#### **MVP Feature Set**
+- [x] In-memory, non-custodial key management
+- [x] BIP39 seed/phrase generation
+- [x] Secure transaction signing (Ethereum base support)
+- [x] WASM-powered Rust core
+- [x] Chrome/Edge browser extension support
+- [x] Minimal React-based wallet UI
+
+#### **Future/Optional Features**
+- [ ] Multi-chain support (Solana, Cosmos, etc.)
+- [ ] Hardware wallet integration
+- [ ] Multi-sig and co-signing workflows
+- [ ] Transaction simulation and risk diagnostics
+- [ ] Browser push notifications and dApp connectivity
+- [ ] Plugin architecture for extensibility
+- [ ] Zero-knowledge proofs & post-quantum crypto options
+
+
 ### Phase 1: Foundation & Security Core ✅
-- [x] **Q1 2024**: Rust cryptographic core development
+- [x] **October 2025**: Rust cryptographic core development
   - [x] Secure key generation & management
   - [x] BIP39 seed phrase implementation
   - [x] Transaction signing engine
-- [x] **Q2 2024**: WebAssembly compilation pipeline
+- [x] **November 2025**: WebAssembly compilation pipeline
   - [x] WASM bindings for JavaScript
   - [x] Memory-safe cryptographic operations
   - [x] Core security audit
 
 ### Phase 2: Browser Extension & UI 🚧 (Current)
-- [ ] **Q3 2024**: TypeScript extension framework
+- [ ] **December 2025**: TypeScript extension framework
   - [ ] Chrome extension manifest v3
   - [ ] Edge compatibility layer
   - [ ] React component library
-- [ ] **Q4 2024**: Wallet functionality
+- [ ] **January 2026**: Wallet functionality
   - [ ] Account management interface
   - [ ] Transaction signing UI
   - [ ] Network connectivity (Ethereum JSON-RPC)
 
 ### Phase 3: Enhanced Security & Features 🔄
-- [ ] **Q1 2025**: Advanced security features
+- [ ] **February 2026**: Advanced security features
   - [ ] Hardware wallet integration (Ledger, Trezor)
   - [ ] Multi-signature support
   - [ ] Transaction simulation & risk analysis
-- [ ] **Q2 2025**: User experience
+- [ ] **Post-February 2026**: User experience
   - [ ] Portfolio tracking & analytics
   - [ ] Cross-chain compatibility (EVM, Solana, Cosmos)
   - [ ] Browser notification system
 
 ### Phase 4: Ecosystem & Scale 🌟
-- [ ] **H2 2025**: Platform expansion
+- [ ] **Post-February 2026**: Platform expansion
   - [ ] Mobile companion app (React Native + Rust core)
   - [ ] Developer API for dApp integration
   - [ ] Plugin system for custom functionality
   - [ ] Formal verification of critical components
 
 ### Phase 5: Future Research 🔬
-- [ ] **2026+**: Next-generation security
+- [ ] **Later 2026+**: Next-generation security
   - [ ] Zero-knowledge proof integration
   - [ ] MPC (Multi-Party Computation) protocols
   - [ ] Post-quantum cryptography readiness
@@ -105,30 +139,37 @@ Forte employs a hybrid architecture that isolates security-critical operations f
 
 | Date | Scope | Auditor | Status |
 |------|-------|---------|--------|
-| Q3 2024 | Rust Cryptographic Core | TBD | Scheduled |
-| Q1 2025 | Full Extension Suite | TBD | Planned |
-| Q4 2025 | Smart Contract Integration | TBD | Planned |
+| Q4 2025 | Rust Cryptographic Core | TBD | Scheduled |
+| Q2 2026 | Full Extension Suite | TBD | Planned |
+| Q4 2026 | Smart Contract Integration | TBD | Planned |
 
 ## 🏗️ Architecture Overview
 
-┌─────────────────────────────────────────────────┐
-│ Browser Extension │
-│ ┌─────────────┐ ┌──────────────────────────┐ │
-│ │ React UI │ │ Background Script │ │
-│ │ Components │ │ (Transaction Routing) │ │
-│ └─────────────┘ └──────────────────────────┘ │
-│ │ │ │
-│ └────────────────────┘ │
-│ WASM Bridge │
-└─────────────────────────┬───────────────────────┘
-│
-┌─────────────────────────▼───────────────────────┐
-│ Rust Security Core │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────┐ │
-│ │ Key Management │ Transaction │ │Crypto │ │
-│ │ │ Signing │ │Primitives│ │
-│ └─────────────┘ └─────────────┘ └─────────┘ │
-└─────────────────────────────────────────────────┘
+```
+┌───────────────────────────────────────────────┐
+│           Browser Extension                   │
+│ ┌─────────────────────┐   ┌────────────────┐ │
+│ │  React UI           │   │ Background     │ │
+│ │  Components         │   │ Script (Tx     │ │
+│ │                     │   │ Routing,       │ │
+│ │                     │   │ Messaging)     │ │
+│ └─────────▲───────────┘   └────────┬───────┘ │
+│           │   ▲                     │         │
+│           │   │     ┌───────────────▼──────┐  │
+│           └───┼────►│     WASM Bridge     │  │
+│               │      └───────────────▲────┘  │
+│               │                      │        │
+└───────────────┼──────────────────────┼────────┘
+                │                      │
+                ▼                      ▼
+      ┌─────────────────────────────────────────────┐
+      │              Rust Security Core             │
+      │ ┌──────────────┬─────────────┬───────────┐  │
+      │ │ Key Mgmt     │ Transaction │ Crypto    │  │
+      │ │ & Vault      │ Signing     │ Primitives│  │
+      │ └──────────────┴─────────────┴───────────┘  │
+      └─────────────────────────────────────────────┘
+```
 
 ---
 
