@@ -63,23 +63,52 @@ Forte employs a hybrid architecture that isolates security-critical operations f
 | **Type Safety** | TypeScript | Catch errors at compile time |
 | **Key Storage** | Encrypted in-memory only | Never persisted to disk |
 
+
+## 🏗️ Architecture Overview
+
+```
+┌───────────────────────────────────────────────┐
+│           Browser Extension                   │
+│ ┌─────────────────────┐   ┌─────────────────┐ │
+│ │  React UI           │   │ Background      │ │
+│ │  Components         │   │ Script (Tx      │ │
+│ │                     │   │ Routing,        │ │
+│ │                     │   │ Messaging)      │ │
+│ └─────────▲───────────┘   └─────────┬───────┘ │
+│           │   ▲                     │         │
+│           │   │     ┌───────────────▼──────┐  │
+│           └───┼────►│     WASM Bridge      │  │
+│               │     └────────────────▲─────┘  │
+│               │                      │        │
+└───────────────┼──────────────────────┼────────┘
+                │                      │
+                ▼                      ▼
+      ┌─────────────────────────────────────────────┐
+      │              Rust Security Core             │
+      │ ┌──────────────┬─────────────┬───────────┐  │
+      │ │ Key Mgmt     │ Transaction │ Crypto    │  │
+      │ │ & Vault      │ Signing     │ Primitives│  │
+      │ └──────────────┴─────────────┴───────────┘  │
+      └─────────────────────────────────────────────┘
+```
+
 ## 🗺️ Development Roadmap
 
 ### Phase 0: Requirements Definition & Scoping 📝
 
 - [x] **October 2025 - February 2026**: Requirements Gathering & Planning
-  - [x] Define target users & threat model
-  - [x] Identify primary use cases (key management, wallet functionality, secure signing)
-  - [x] Audit competitor landscape (security model, usability, features)
-  - [x] List minimum viable product (MVP) features
+  - [ ] Define target users & threat model
+  - [ ] Identify primary use cases (key management, wallet functionality, secure signing)
+  - [ ] Audit competitor landscape (security model, usability, features)
+  - [ ] List minimum viable product (MVP) features
 
 #### **MVP Feature Set**
-- [x] In-memory, non-custodial key management
-- [x] BIP39 seed/phrase generation
-- [x] Secure transaction signing (Ethereum base support)
-- [x] WASM-powered Rust core
-- [x] Chrome/Edge browser extension support
-- [x] Minimal React-based wallet UI
+- [ ] In-memory, non-custodial key management
+- [ ] BIP39 seed/phrase generation
+- [ ] Secure transaction signing (Ethereum base support)
+- [ ] WASM-powered Rust core
+- [ ] Chrome/Edge browser extension support
+- [ ] Minimal React-based wallet UI
 
 #### **Future/Optional Features**
 - [ ] Multi-chain support (Solana, Cosmos, etc.)
@@ -92,14 +121,14 @@ Forte employs a hybrid architecture that isolates security-critical operations f
 
 
 ### Phase 1: Foundation & Security Core ✅
-- [x] **October 2025**: Rust cryptographic core development
-  - [x] Secure key generation & management
-  - [x] BIP39 seed phrase implementation
-  - [x] Transaction signing engine
-- [x] **November 2025**: WebAssembly compilation pipeline
-  - [x] WASM bindings for JavaScript
-  - [x] Memory-safe cryptographic operations
-  - [x] Core security audit
+- [ ] **October 2025**: Rust cryptographic core development
+  - [ ] Secure key generation & management
+  - [ ] BIP39 seed phrase implementation
+  - [ ] Transaction signing engine
+- [ ] **November 2025**: WebAssembly compilation pipeline
+  - [ ] WASM bindings for JavaScript
+  - [ ] Memory-safe cryptographic operations
+  - [ ] Core security audit
 
 ### Phase 2: Browser Extension & UI 🚧 (Current)
 - [ ] **December 2025**: TypeScript extension framework
@@ -143,33 +172,7 @@ Forte employs a hybrid architecture that isolates security-critical operations f
 | Q2 2026 | Full Extension Suite | TBD | Planned |
 | Q4 2026 | Smart Contract Integration | TBD | Planned |
 
-## 🏗️ Architecture Overview
 
-```
-┌───────────────────────────────────────────────┐
-│           Browser Extension                   │
-│ ┌─────────────────────┐   ┌────────────────┐ │
-│ │  React UI           │   │ Background     │ │
-│ │  Components         │   │ Script (Tx     │ │
-│ │                     │   │ Routing,       │ │
-│ │                     │   │ Messaging)     │ │
-│ └─────────▲───────────┘   └────────┬───────┘ │
-│           │   ▲                     │         │
-│           │   │     ┌───────────────▼──────┐  │
-│           └───┼────►│     WASM Bridge     │  │
-│               │      └───────────────▲────┘  │
-│               │                      │        │
-└───────────────┼──────────────────────┼────────┘
-                │                      │
-                ▼                      ▼
-      ┌─────────────────────────────────────────────┐
-      │              Rust Security Core             │
-      │ ┌──────────────┬─────────────┬───────────┐  │
-      │ │ Key Mgmt     │ Transaction │ Crypto    │  │
-      │ │ & Vault      │ Signing     │ Primitives│  │
-      │ └──────────────┴─────────────┴───────────┘  │
-      └─────────────────────────────────────────────┘
-```
 
 ---
 
